@@ -1,9 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import sequelize from './config/database.js';
-import userRoutes from './routes/userRoutes.js';
-import paymentRoutes from './routes/paymentRoutes.js';
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const sequelize = require('./config/database.js');
+const userRoutes = require('./routes/userRoutes.js');
+const paymentRoutes = require('./routes/paymentRoutes.js');
 
 dotenv.config();
 
@@ -18,3 +18,5 @@ sequelize.sync().then(() => console.log("Database connected"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+

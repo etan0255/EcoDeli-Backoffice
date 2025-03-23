@@ -1,15 +1,8 @@
-import express from 'express';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
-
+const express = require('express');
 const router = express.Router();
+const userController = require('../controllers/userController.js');
 
-router.post('/register', async (req, res) => {
-  const { email, password, role } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const newUser = await User.create({ email, password: hashedPassword, role });
-  res.status(201).json({ message: 'User registered successfully' });
-});
+router.get('/', userController.getUsers);
 
-export default router;
+module.exports = router;
+
